@@ -1,0 +1,329 @@
+# ☕ Coffee Bean Calculator — Python OOP & Streamlit
+
+A small learning project to practice **Object-Oriented Programming (OOP) in Python** and implement the resulting logic in a simple **Streamlit** application.
+
+The project uses coffee bean dimensions and mass to calculate **volume** and **density**.
+
+This project was created as part of my hands-on learning process to understand how Python classes, objects, attributes, methods, `self`, and `return` work together in a practical application.
+
+---
+
+## 🎯 Learning Goals
+
+Through this project, I am practicing:
+
+* Understanding classes and objects in Python
+* Understanding the role of `__init__`
+* Understanding `self` and object attributes
+* Creating and calling instance methods
+* Using one method from another method
+* Understanding the difference between `return` and `print()`
+* Separating calculation logic from the user interface
+* Connecting a Python class with a Streamlit interface
+
+---
+
+## 📐 Calculations
+
+### Volume
+
+The coffee bean volume is estimated using:
+
+$$
+V = \frac{22}{7} \times \frac{L \times W \times T}{6}
+$$
+
+where:
+
+* `L` = length
+* `W` = width
+* `T` = thickness
+
+### Density
+
+Density is calculated as:
+
+$$
+\rho = \frac{m}{V}
+$$
+
+where:
+
+* `m` = mass
+* `V` = volume
+
+> **Note:** This project is primarily an OOP and programming exercise. The formulas are implemented based on the simplified coffee-bean calculation used in the learning exercise.
+
+---
+
+## 🧠 OOP Concept
+
+The main class in this project is `Coffee`.
+
+```python
+class Coffee:
+    def __init__(self, length, width, thick, mass):
+        self.length = length
+        self.width = width
+        self.thick = thick
+        self.mass = mass
+```
+
+A `Coffee` object stores its own properties:
+
+```text
+Coffee object
+├── length
+├── width
+├── thick
+└── mass
+```
+
+The object also has methods that operate on its own data:
+
+```text
+Coffee object
+├── Data
+│   ├── length
+│   ├── width
+│   ├── thick
+│   └── mass
+│
+└── Behavior
+    ├── calculate_volume()
+    └── calculate_density()
+```
+
+### Understanding `self`
+
+One of the main concepts I learned from this project is that `self` refers to the **current object**.
+
+For example:
+
+```python
+coffee1 = Coffee(9.1, 4, 2.1, 1.2)
+```
+
+When `calculate_volume()` is called:
+
+```python
+coffee1.calculate_volume()
+```
+
+`self` refers to `coffee1`.
+
+Therefore:
+
+```python
+self.length
+```
+
+refers to:
+
+```python
+coffee1.length
+```
+
+This allows the same method to work with different objects.
+
+---
+
+## 💻 Project Structure
+
+```text
+coffee-oop-streamlit/
+│
+├── app.py
+├── coffee.py
+├── README.md
+└── requirements.txt
+```
+
+### `coffee.py`
+
+Contains the `Coffee` class and calculation logic.
+
+### `app.py`
+
+Contains the Streamlit interface and handles user input and output.
+
+### `requirements.txt`
+
+Contains the Python dependencies required to run the application.
+
+---
+
+## 🚀 How to Run
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/your-username/coffee-oop-streamlit.git
+```
+
+### 2. Move into the project directory
+
+```bash
+cd coffee-oop-streamlit
+```
+
+### 3. Install the dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Run the Streamlit application
+
+```bash
+streamlit run app.py
+```
+
+The application will open in your browser.
+
+---
+
+## 🖥️ Application
+
+The Streamlit interface allows the user to enter:
+
+* Length
+* Width
+* Thickness
+* Mass
+
+The application then creates a `Coffee` object and uses its methods to calculate:
+
+* Volume
+* Density
+
+The basic flow is:
+
+```text
+User Input
+    ↓
+Streamlit
+    ↓
+Create Coffee Object
+    ↓
+calculate_volume()
+    ↓
+calculate_density()
+    ↓
+Display Result
+```
+
+---
+
+## 📚 Things I Initially Learned / Misunderstood
+
+This project helped clarify several concepts that are easy to memorize without fully understanding.
+
+### 1. A class is not an object
+
+```python
+class Coffee:
+    ...
+```
+
+defines the class (blueprint).
+
+```python
+coffee1 = Coffee(...)
+```
+
+creates an object (instance) from that class.
+
+### 2. `self` is not an attribute
+
+`self` refers to the current object.
+
+For example:
+
+```python
+self.mass
+```
+
+means the `mass` belonging to the current object.
+
+### 3. `return` does not automatically display a value
+
+```python
+return value
+```
+
+gives a value back to the code that called the function.
+
+To display it:
+
+```python
+print(function())
+```
+
+or, in Streamlit:
+
+```python
+st.write(function())
+```
+
+### 4. Methods are not automatically executed
+
+Defining:
+
+```python
+def calculate_volume(self):
+    ...
+```
+
+only defines the method.
+
+It runs when called:
+
+```python
+coffee1.calculate_volume()
+```
+
+### 5. Objects can use their own methods
+
+Inside:
+
+```python
+def calculate_density(self):
+    volume = self.calculate_volume()
+```
+
+the object asks itself to calculate its own volume.
+
+This helped me understand how data and behavior can be grouped together inside an object.
+
+---
+
+## 🔄 Future Improvements
+
+Possible improvements for this project:
+
+* Add coffee type selection (Arabica / Robusta)
+* Add input validation
+* Display results with better formatting
+* Add surface area calculation
+* Add equivalent particle diameter
+* Add Archimedes number calculation
+* Improve the Streamlit interface
+* Add unit selection and conversion
+* Add basic visualization of the calculated properties
+
+---
+
+## 🛠️ Technologies
+
+* Python
+* Object-Oriented Programming (OOP)
+* Streamlit
+
+---
+
+## 📌 Project Status
+
+**Learning project — ongoing**
+
+This repository documents my hands-on practice with Python OOP and Streamlit. The application may be expanded as I learn more about Python programming and software development.
